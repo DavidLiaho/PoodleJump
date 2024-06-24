@@ -105,14 +105,14 @@ function update() {
 
     //score
     updateScore();
-    context.fillStyle = "black"; 
+    context.fillStyle = "black";
     context.font = "bold 25px san-serif";
     context.fillText(score, 5, 30);
 
     if (gameOver) {
-        context.fillText("Game Over", boardWidth/2 - 70, boardHeight/2);
-        context.fillText(`Score: ${score}`, boardWidth/2 - 60, boardHeight*3/4 - 20);
-        context.fillText("Press `Space` to Restart", boardWidth/2 - 130, boardHeight*3/4 + 20);
+        context.fillText("Game Over", boardWidth / 2 - 70, boardHeight / 2);
+        context.fillText(`Score: ${score}`, boardWidth / 2 - 60, boardHeight * 3 / 4 - 20);
+        context.fillText("Press `Space` to Restart", boardWidth / 2 - 130, boardHeight * 3 / 4 + 20);
     }
 }
 
@@ -138,7 +138,7 @@ function movePoodle(e) {
         velocityX = 0;
         velocityY = initialVelocityY;
         score = 0;
-        maxScore = 0; 
+        maxScore = 0;
         gameOver = false;
         placePlatforms();
     }
@@ -159,7 +159,7 @@ function placePlatforms() {
 
     // random platforms
     for (let i = 0; i < 7; i++) {
-        let randomX = Math.floor(Math.random() * boardWidth * 3 / 4);
+        let randomX = Math.floor(Math.random() * (boardWidth - platformWidth));
         let platform = {
             img: platformImg,
             x: randomX,
@@ -173,7 +173,7 @@ function placePlatforms() {
 }
 
 function newPlatform() {
-    let randomX = Math.floor(Math.random() * boardWidth * 3 / 4);
+    let randomX = Math.floor(Math.random() * (boardWidth - platformWidth));
     let platform = {
         img: platformImg,
         x: randomX,
@@ -190,11 +190,11 @@ function detectCollision(a, b) {
         a.x + a.width > b.x &&
         a.y < b.y + b.height &&
         a.y + a.height > b.y;
-} 
+}
 
 function updateScore() {
-    let points = Math.floor(10*Math.random());
-    if (velocityY < 0){ // going up
+    let points = 5;
+    if (velocityY < 0 && poodle.y < board.height - board.height / 4) { // going up
         maxScore += points;
         if (score < maxScore) {
             score = maxScore;
