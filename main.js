@@ -23,8 +23,8 @@ let poodle = {
 // Physics
 let velocityX = 0;
 let velocityY = 0;
-let initialVelocityY = -7;
-let gravity = 0.2;
+let initialVelocityY = -12;
+let gravity = 0.6;
 
 // Platforms
 let platformArray = [];
@@ -118,11 +118,11 @@ function update() {
 
 function movePoodle(e) {
     if (e.code === "ArrowRight" || e.code === "KeyD") { // move right
-        velocityX = 10;
+        velocityX = 15;
         poodle.img = poodleRightImg;
     }
     else if (e.code === "ArrowLeft" || e.code === "KeyA") {
-        velocityX = -10;
+        velocityX = -15;
         poodle.img = poodleLeftImg;
     }
     else if (e.code === "Space" && gameOver) {
