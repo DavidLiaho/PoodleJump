@@ -1,7 +1,48 @@
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgb(49, 49, 49), black);
+    overflow: hidden;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body > * {
+    margin: 0;
+    padding: 0;
+}
+
+#volumeButton {
+    position: absolute;
+    left: 60px;
+    top: 50px;
+    width: 40px;
+    transition: all 0.3s ease-out;
+}
+
+#volumeButton:hover {
+    transform: scale(1.2);
+}
+
+marquee {
+    color: white;
+    margin: 15px;
+}
+
+h1 {
+    font-family: "Bauhaus 93";
+    color: red;
+    font-size: 60px;
 }
 
 #board {
-    background-image: url(poodlejumpbg.png);
+    background-image: url("./assets/images/poodlejumpbg.png");
+    border-radius: 10px;
 }

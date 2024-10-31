@@ -1,3 +1,35 @@
+const soundtrack = new Audio("./assets/audio/soundtrack.mp3");
+const volumeButton = document.getElementById("volumeButton");
+volumeButton.addEventListener("click", () => {
+    if (!soundtrack.paused) {
+        soundtrack.load();
+        volumeButton.src = "./assets/images/mute-red.png";
+    }
+    else {
+        soundtrack.play();
+        volumeButton.src = "./assets/images/volume-red.png";
+    }
+});
+
+volumeButton.addEventListener("mouseenter", () => {
+    if (soundtrack.paused) {
+        volumeButton.src = "./assets/images/mute.png";
+    }
+    else {
+        volumeButton.src = "./assets/images/volume.png";
+    }
+});
+
+volumeButton.addEventListener("mouseleave", () => {
+    if (soundtrack.paused) {
+        volumeButton.src = "./assets/images/mute-red.png";
+    }
+    else {
+        volumeButton.src = "./assets/images/volume-red.png";
+    }
+});
+
+
 //board
 let board;
 let boardWidth = 1500; // 500
@@ -28,8 +60,8 @@ let gravity = 0.2;
 
 // Platforms
 let platformArray = [];
-let platformWidth = 100; // 100
-let platformHeight = 17; // 17
+let platformWidth = 100;
+let platformHeight = 17;
 let platformImg;
 
 let score = 0;
@@ -37,6 +69,8 @@ let maxScore = 0;
 let gameOver = false;
 
 window.onload = function () {
+    soundtrack.play();
+    soundtrack.loop = true;
     board = document.getElementById("board");
     board.height = boardHeight;
     board.width = boardWidth;
@@ -44,7 +78,7 @@ window.onload = function () {
 
     //load images
     poodleRightImg = new Image();
-    poodleRightImg.src = "poodle-right.png";
+    poodleRightImg.src = "./assets/images/poodle-right.png";
     poodle.img = poodleRightImg;
     poodleRightImg.onload = function () {
         context.drawImage(poodle.img, poodle.x, poodle.y, poodle.width, poodle.height);
@@ -52,10 +86,10 @@ window.onload = function () {
     }
 
     poodleLeftImg = new Image();
-    poodleLeftImg.src = "poodle-left.png";
+    poodleLeftImg.src = "./assets/images/poodle-left.png";
 
     platformImg = new Image();
-    platformImg.src = "platform.png"
+    platformImg.src = "./assets/images/platform.png"
 
     velocityY = initialVelocityY;
     placePlatforms();
